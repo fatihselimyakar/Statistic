@@ -13,9 +13,13 @@ int main(){
 	cout<<deneme2;
 	Statistic deneme3(deneme);
 	deneme3=deneme+deneme2;
+	Statistic deneme4(deneme3);
+	deneme4=deneme3-1;
 	//deneme3=(deneme+deneme2);
 	cout<<"DENEME3'S |+| RESULT"<<endl;
 	cout<<deneme3;
+	cout<<"DENEME4'S |-| RESULT"<<endl;
+	cout<<deneme4;
 	//deneme.add(4);
 	
 	

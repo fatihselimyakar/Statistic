@@ -23,6 +23,7 @@ namespace STATIC{
 			void set(int newSize,int newCapacity);
 			Statistic& operator=(const Statistic& rightSide);
 			Statistic operator+(const Statistic& rightSide);
+			Statistic operator-(int deleteNum);
 			friend ostream& operator<<(ostream& outputStream,const Statistic& object);
 			double ortalama()const;
 			double mod()const;

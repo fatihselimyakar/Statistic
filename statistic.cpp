@@ -42,6 +42,15 @@ namespace STATIC{
 		return temp;
 
 	}
+	Statistic Statistic::operator-(int deleteNum){
+		Statistic temp(capacity-deleteNum,size-deleteNum);
+		for(int i=0;i<size-1;i++){
+			temp.array[i]=array[i];
+		}
+		temp.capacity=capacity-deleteNum;
+		temp.size=size-deleteNum;
+		return temp;
+	}
 	ostream& operator<<(ostream& outputStream,const Statistic& object){
 		for(int i=0;i<object.size;i++){
 			outputStream<<object.array[i]<<" ";
