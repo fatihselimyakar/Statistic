@@ -1,8 +1,9 @@
 #ifndef STATISTIC_H
 #define STATISTIC_H
 #include<iostream>
+#include<cmath>
 using namespace std;
-namespace STATIC{
+namespace STATISTIC{
 	
 	class Statistic{
 		public:
@@ -14,7 +15,7 @@ namespace STATIC{
 				size=object.size;
 				for(int i=0;i<size;i++)
 					array[i]=object.array[i];
-				cout<<"copy const."<<endl;
+				//cout<<"copy const."<<endl;
 			}
 			void add(double number);
 			int getSize()const{ return size; }
@@ -25,10 +26,18 @@ namespace STATIC{
 			Statistic operator+(const Statistic& rightSide);
 			Statistic operator-(int deleteNum);
 			friend ostream& operator<<(ostream& outputStream,const Statistic& object);
-			double ortalama()const;
-			double mod()const;
-			double medyan()const;
-			~Statistic(){ delete [] array; cout<<"dest."<<endl;}
+			double mean()const;
+			double max()const;
+			double median()const;
+			double mode()const;
+			double geometricMean()const;
+			double standartDeviation()const;
+			double min()const;
+			double openness()const{ return max()-min(); }
+			~Statistic(){ 
+				delete [] array; 
+				//cout<<"dest."<<endl;
+			}
 		private:
 			double *array;
 			int size;

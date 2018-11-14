@@ -1,6 +1,6 @@
 #include"statistic.h"
 
-namespace STATIC{
+namespace STATISTIC{
 	void Statistic::makeTheArray(){
 		cout<<"Please enter the array capacity"<<endl;
 		cin>>capacity;
@@ -61,7 +61,7 @@ namespace STATIC{
 
 		return outputStream;
 	}
-	double Statistic::ortalama()const{
+	double Statistic::mean()const{
 		double total;
 		for(int i=0;i<size;i++){
 			total+=array[i];
@@ -69,7 +69,7 @@ namespace STATIC{
 
 		return total/size;
 	}
-	double Statistic::mod()const{
+	double Statistic::max()const{
 		double max=0;
 		for(int i=0;i<size;i++){
 			int temp=max;
@@ -80,7 +80,7 @@ namespace STATIC{
 
 		return max;
 	}
-	double Statistic::medyan()const{
+	double Statistic::median()const{
 		double arr[size];
 		for(int i=0;i<size;i++){
 			arr[i]=array[i];
@@ -94,7 +94,6 @@ namespace STATIC{
 		else
 			return arr[(size/2)];
 	}
-
 	void Statistic::add(double number){
 		if(capacity>size){
 			array[size]=number;
@@ -103,5 +102,49 @@ namespace STATIC{
 		else
 			cout<<"You dont add this in the array"<<endl;
 
+	}
+	double Statistic::geometricMean()const{
+		double multiply=1;
+		for(int i=0;i<size;i++){
+			multiply*=array[i];
+		}
+		return pow(multiply,1.0/size);
+	}
+	double Statistic::mode()const{
+		double value=0,count=0;
+		int i,j;
+
+		for(i=0;i<size;++i){
+			int ct=0;
+			for(j=0;j<size;++j){
+				if (array[j]==array[i])
+				++ct;
+			}
+			if(ct>count) {
+				count=ct;
+				value=array[i];
+			}
+		}
+		return value;
+	}
+	double Statistic::standartDeviation()const{
+		double sum=0;
+		double mean=this->mean();
+		for(int i=0;i<size;i++){
+			sum+=pow(array[i]-mean,2);
+		}
+		
+		return sqrt(sum/(size-1));
+	}
+	double Statistic::min()const{
+		double min=999999999;
+		for(int i=0;i<size;i++){
+			int temp=min;
+			min=array[i];
+			if(temp<min)
+				min=temp;
+		}
+
+		return min;
 	}
 }
