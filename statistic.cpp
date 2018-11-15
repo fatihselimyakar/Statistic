@@ -31,6 +31,22 @@ namespace STATISTIC{
 		return *this;
 
 	}
+	Statistic& Statistic::operator+=(const Statistic& rightSide){
+		double *buffer=new double[capacity];
+		for(int i=0;i<size;i++)
+			buffer[i]=array[i];
+		delete[] array;
+		array= new double[capacity+rightSide.capacity];
+		int i;
+		for(i=0;i<size;i++)
+			array[i]=buffer[i];
+		for(int j=0;j<rightSide.size;j++)
+			array[i+j]=rightSide.array[j];
+		capacity+=rightSide.capacity;
+		size+=rightSide.size;
+		
+		return *this;
+	}
 	Statistic Statistic::operator+(const Statistic& rightSide){
 		Statistic temp(capacity+rightSide.capacity,size+rightSide.size);
 		int i;
@@ -61,6 +77,7 @@ namespace STATISTIC{
 
 		return outputStream;
 	}
+	
 	double Statistic::mean()const{
 		double total;
 		for(int i=0;i<size;i++){
@@ -147,4 +164,5 @@ namespace STATISTIC{
 
 		return min;
 	}
+	
 }
